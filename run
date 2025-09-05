@@ -1,0 +1,3 @@
+#!/bin/bash -ea
+. .env
+node bot.js

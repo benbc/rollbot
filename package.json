@@ -1,0 +1,8 @@
+{
+  "name": "rollbot",
+  "version": "1.0.0",
+  "description": "A Discord bot that rolls dice",
+  "dependencies": {
+    "discord.js": "^14.14.1"
+  }
+}
