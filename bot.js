@@ -9,8 +9,9 @@ const client = new Client({
 });
 
 client.on("messageCreate", async (message) => {
-  const dicePattern = /(?:^|\s)(\d*)d(\d+)([+-]\d+)?$/i;
-  const match = message.content.match(dicePattern);
+  // Dice notation at start of line or after a label: "d6" or "Intelligence 3d6+1"
+  const pattern = /^(?:.+ )?([0-9]*)d([0-9]+)([+-][0-9]+)?$/i;
+  const match = message.content.match(pattern);
   if (!match) return;
 
   const roll = match[0].trim();
