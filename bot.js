@@ -9,10 +9,11 @@ const client = new Client({
 });
 
 client.on("messageCreate", async (message) => {
-  const dicePattern = /^(\d*)d(\d+)([+-]\d+)?$/i;
+  const dicePattern = /(?:^|\s)(\d*)d(\d+)([+-]\d+)?$/i;
   const match = message.content.match(dicePattern);
   if (!match) return;
 
+  const roll = match[0].trim();
   const count = parseInt(match[1]) || 1;
   const size = parseInt(match[2]);
   const modifier = parseInt(match[3]) || 0;
@@ -22,7 +23,7 @@ client.on("messageCreate", async (message) => {
     total += Math.floor(Math.random() * size) + 1;
   }
 
-  console.log(`${match[0]} => ${total}`);
+  console.log(`${roll} => ${total}`);
   await message.reply(total.toString());
 });
 
